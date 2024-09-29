@@ -1,48 +1,45 @@
-//6.6
 import java.util.Scanner;
-public class AddTwoMatrix {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
 
-        System.out.print("Nhâp số hàng của ma trận: ");
-        int row = sc.nextInt();
-        System.out.print("Nhập số cột của ma trận: ");
-        int col = sc.nextInt();
+public class addMatrices {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        //Khai báo ma trận số thực
-        double[][] matA = new double[row][col]; //Ma trận A
-        double[][] matB = new double[row][col]; //Ma trận B
-        double[][] matAns = new double[row][col]; //Ma trận kết quả
 
-        //Nhập các phần tử trong các ma trận
-        System.out.println("\nHãy nhập các phần tử trong ma trận A: ");
-        for (int i=0;i<row;i++){
-            for (int j=0;j<col;j++){
-                matA[i][j] = sc.nextDouble();
-            }
-        }
-        System.out.println("\nHãy nhập các phần tử trong ma trận B: ");
-        for (int i=0;i<row;i++){
-            for (int j=0;j<col;j++){
-                matB[i][j] = sc.nextDouble();
+        System.out.print("Number of rows:  ");
+        int rows = scanner.nextInt();
+        System.out.print("Number of columns: ");
+        int cols = scanner.nextInt();
+
+        int[][] matrix1 = new int[rows][cols];
+        int[][] matrix2 = new int[rows][cols];
+        int[][] resultMatrix = new int[rows][cols];
+
+        System.out.println("Enter elements of the first matrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix1[i][j] = scanner.nextInt();
             }
         }
 
-        //Tính matA + matB
-        for (int i=0;i<row;i++){
-            for (int j=0;j<col;j++){
-                matAns[i][j] = matA[i][j] + matB[i][j];
+        System.out.println("Enter elements of the second matrix:");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix2[i][j] = scanner.nextInt();
             }
         }
 
-        //In kết quả
-        System.out.println("\n________________________________");
-        System.out.println("Kết quả matA + amtB là: ");
-        for (int i=0;i<row;i++){
-            for (int j=0;j<col;j++){
-                System.out.print(matAns[i][j]+" ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                resultMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
             }
-            System.out.println();   //Xuống dòng
+        }
+
+        System.out.println("Result: ");
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(resultMatrix[i][j] + " ");
+            }
+            System.out.println();
         }
     }
 }
