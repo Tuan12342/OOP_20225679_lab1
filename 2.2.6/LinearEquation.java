@@ -1,26 +1,30 @@
-//2.2.6 - Part 1
 import java.util.Scanner;
-public class LinearEquation {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
 
-        // Nhập hệ số a và b từ người dùng
-        System.out.print("Input a: ");
-        double a = sc.nextDouble();
-        System.out.print("Input b: ");
-        double b = sc.nextDouble();
+public class solveLinearEquation {
+    public static void main( String args[]){
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Input a: ");
+        double a = scanner.nextDouble();
+                
+        System.out.println("Input b: ");
+        double b = scanner.nextDouble();
 
-        // Kiểm tra xem a có phải là 0 hay không
+        solve(a, b);
+        
+    }
+    public static double solve(double a, double b){
+        double x = 0;
         if (a == 0) {
             if (b == 0) {
-                System.out.println("Phương trình vô số nghiệm.");
+                System.out.println("The equation has infinite solutions.");
             } else {
-                System.out.println("Phương trình vô nghiệm.");
+                System.out.println("The equation has no solution.");
             }
         } else {
-            // Tính nghiệm x
-            double x = -b / a;
-            System.out.println("Nghiệm của phương trình là: x = " + x);
+            x = -b / a;
+            System.out.println("The result for Lỉnear Equation is" + x);
         }
+        return x;
     }
 }
