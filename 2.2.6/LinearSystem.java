@@ -1,42 +1,44 @@
-//2.2.6 - Part 2
 import java.util.Scanner;
-public class LinearSystem {
-    public static void main(String[] args){
-        // Nhập hệ số
-        //a1*x + b1*y = c1
-        //a2*x + b2*y = c2
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Input a1: ");
-        double a1 = sc.nextDouble();
-        System.out.print("Input b1: ");
-        double b1 = sc.nextDouble();
-        System.out.print("Input c1: ");
-        double c1 = sc.nextDouble();
-        System.out.print("Input a2: ");
-        double a2 = sc.nextDouble();
-        System.out.print("Input b2: ");
-        double b2 = sc.nextDouble();
-        System.out.print("Input c2: ");
-        double c2 = sc.nextDouble();
+public class solveLinearSystem {
+    public static void main(String args[]){
+        Scanner scanner = new Scanner(System.in);
 
-        // Tính định thức hệ số
-        double det = a1 * b2 - a2 * b1;
+        System.out.print("Enter coefficient a11: ");
+        double a11 = scanner.nextDouble();
+            
+        System.out.print("Enter coefficient a12: ");
+        double a12 = scanner.nextDouble();
+            
+        System.out.print("Enter constant b1: ");
+        double b1 = scanner.nextDouble();
 
-        // Kiểm tra xem hệ phương trình có nghiệm hay không
-        if (det == 0) {
-            if (c1/c2 == a1/a2) {
-                System.out.println("Hệ phương trình có vô số nghiệm.");
+        System.out.print("Enter coefficient a21: ");
+        double a21 = scanner.nextDouble();
+        
+        System.out.print("Enter coefficient a22: ");
+        double a22 = scanner.nextDouble();
+        
+        System.out.print("Enter constant b2: ");
+        double b2 = scanner.nextDouble();
+        
+        double D = a11 * a22 - a21 * a12;
+        double D1 = b1 * a22 - b2 * a12;
+        double D2 = a11 * b2 - a21 * b1;
+
+        if (D == 0) {
+            if ((D2) == 0 && (D1) == 0) {
+                System.out.println("The system has infinite solutions.");
             } else {
-                System.out.println("Hệ phương trình vô nghiệm.");
+                System.out.println("The system has no solution.");
             }
         } else {
-            // Tính nghiệm x và y
-            double x = (c1 * b2 - c2 * b1) / det;
-            double y = (a1 * c2 - a2 * c1) / det;
-
-            System.out.println("Nghiệm của hệ phương trình là:");
+            double x = D1 / D;
+            double y = D2 / D;
+            
+            System.out.println("The solution is: ");
             System.out.println("x = " + x);
             System.out.println("y = " + y);
         }
+
     }
 }
