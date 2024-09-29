@@ -1,44 +1,44 @@
-//6.5
 import java.util.Scanner;
-import java.util.Arrays;
 
-public class CountingArray {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+public class sortArray {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Nhập số phần tử của mảng: ");
-        int n = sc.nextInt();
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
 
-        if (n <= 0){
-            System.out.print("Số phần tử của mảng không hợp lệ");
-            return;
+        int[] numbers = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        
+        //Selection sort
+        for (int i = 0; i < numbers.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < numbers.length; j++) {
+                if (numbers[j] < numbers[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            int temp = numbers[minIndex];
+            numbers[minIndex] = numbers[i];
+            numbers[i] = temp;
         }
 
-        double[] arr = new double[n]; //Khai báo mảng arr có n phần tử
-
-        for (int i=0;i<n;i++){
-            System.out.print("Input arr["+i+"]: ");
-            arr[i] = sc.nextDouble();
+        System.out.print("Sorted array: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
         }
+        System.out.println();
 
-        //Sắp xếp mảne tử bé đến lớn
-        Arrays.sort(arr);
-
-        //Tính tổng các phần tử trong mảng
-        double sum = 0;
-        for (int i=0;i<n;i++){
-            sum += arr[i];
+        int sum = 0;
+        for (int num : numbers) {
+            sum += num;
         }
+        System.out.println("Sum of array: " + sum);
 
-        //Tìm số trung bình cộng của các giá trị phần tử trong mảng
-        double avg = sum/n;
-
-        //In các kết quả yêu cầu
-        System.out.println("\n\nMảng sau khi đã sắp xếp từ bé đến lớn: ");
-        for (double i:arr){
-            System.out.print(i+" ");
-        }
-        System.out.println("\nTổng các phần tử trong mảng: "+sum);
-        System.out.print("Trung bình cộng các giá trị rtong mảng: "+avg);
+        double average = (double) sum / numbers.length;
+        System.out.println("Average value of array: " + average);
     }
 }
