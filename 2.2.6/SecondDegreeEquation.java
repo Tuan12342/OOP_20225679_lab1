@@ -1,38 +1,47 @@
-//2,2,6 - Part 3
 import java.util.Scanner;
-public class SecondDegreeEquation {
-    public static void main(String[] args){
-        Scanner sc = new Scanner(System.in);
+public class solveSeDegEquation {
+    public static void main(String args[]){
+        Scanner input = new Scanner(System.in);
 
-        // Nhập các hệ số từ người dùng
-        System.out.print("Nhập hệ số a: ");
-        double a = sc.nextDouble();
-        System.out.print("Nhập hệ số b: ");
-        double b = sc.nextDouble();
-        System.out.print("Nhập hệ số c: ");
-        double c = sc.nextDouble();
-        // Tính Delta
-        double delta = b * b - 4 * a * c;
+        System.out.println("Input a = ");
+        double a = input.nextDouble();
 
-        if (delta > 0) {
-            // Hai nghiệm thực
-            double x1 = (-b + Math.sqrt(delta)) / (2 * a);
-            double x2 = (-b - Math.sqrt(delta)) / (2 * a);
-            System.out.println("Nghiệm của phương trình là:");
+        System.out.println("Input b = ");
+        double b = input.nextDouble();
+
+        System.out.println("Input c = ");
+        double c = input.nextDouble();
+
+        double discriminant = b * b - 4 * a * c;
+
+        if( a == 0){
+            if(b == 0 && c == 0){
+                System.out.println("The equation has infinite solutions.");
+            } else if(b == 0 && c != 0){
+                System.out.println("The equation has no solution.");
+            } else {
+                double x = -b / a;
+                System.out.println("The result is " + x);
+            }
+        }
+        if (discriminant > 0) {
+            //real
+            double x1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            double x2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            System.out.println("The equation has two real result:");
             System.out.println("x1 = " + x1);
             System.out.println("x2 = " + x2);
-        } else if (delta == 0) {
-            // Một nghiệm kép
+        } else if (discriminant == 0) {
             double x = -b / (2 * a);
-            System.out.println("Phương trình có nghiệm kép:");
+            System.out.println("The equation has one result: ");
             System.out.println("x = " + x);
         } else {
-            // Nghiệm phức
-            double re = -b / (2 * a);
-            double im = Math.sqrt(-delta) / (2 * a);
-            System.out.println("Phương trình có nghiệm phức:");
-            System.out.println("x1 = " + re + " + " + im + "i");
-            System.out.println("x2 = " + re + " - " + im + "i");
+            //complex
+            double real = -b / (2 * a);
+            double imaginary = Math.sqrt(-discriminant) / (2 * a);
+            System.out.println("The equation has two complex result:");
+            System.out.println("x1 = " + real + " + " + imaginary + "i");
+            System.out.println("x2 = " + real + " - " + imaginary + "i");
         }
     }
 }
